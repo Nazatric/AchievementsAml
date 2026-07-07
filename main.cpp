@@ -94,8 +94,7 @@ static void SetUnlocked(const Achievement& a)
  * ---------------------------------------------------------------------- */
 static void NotifyUnlock(const Achievement& a)
 {
-    aml->ShowToast(true, "Achievement Unlocked: %s\n%s", a.label, a.description);
-    logger->Info("Unlocked: %s", a.label);
+    logger->Info("Achievement unlocked: %s", a.label);
 }
 
 /* ------------------------------------------------------------------------
