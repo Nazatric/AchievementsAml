@@ -1,0 +1,33 @@
+name: Build AchievementsAML
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Android NDK (r24)
+        uses: nttld/setup-ndk@v1.2.0
+        with:
+          ndk-version: r24
+          local-cache: true
+
+      - name: Build mod (arm64-v8a + armeabi-v7a)
+        run: |
+          $ANDROID_NDK_HOME/ndk-build \
+            NDK_PROJECT_PATH=. \
+            APP_BUILD_SCRIPT=./Android.mk \
+            NDK_APPLICATION_MK=./Application.mk \
+            NDK_DEBUG=0 -j4
+
+      - name: Upload compiled .so files
+        uses: actions/upload-artifact@v4
+        with:
+          name: AchievementsAML-libs
+          path: ./libs/**/libachievementsaml.so
