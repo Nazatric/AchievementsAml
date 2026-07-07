@@ -33,8 +33,8 @@ static bool Check_TenMinutePlaytime()
 }
 
 static Achievement g_achievements[] = {
-    { "ach_session_started", "Engine Started",   "Loaded into San Andreas with AML running", Check_SessionStarted },
-    { "ach_ten_min_play",    "Getting Comfortable", "Played for 10 minutes this session",      Check_TenMinutePlaytime },
+    { "ach_session_started_v2", "Mod Loaded",   "AML successfully loaded AchievementsSA", Check_SessionStarted },
+    { "ach_ten_min_play_v2",    "Getting Comfortable", "Played for 10 minutes this session",      Check_TenMinutePlaytime },
 };
 static const int kAchCount = sizeof(g_achievements) / sizeof(g_achievements[0]);
 
